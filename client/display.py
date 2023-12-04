@@ -1,6 +1,24 @@
 import pygame
 import threading
 
+class Button:
+    def __init__(self):
+        self.from_left = 0
+        self.from_top = 0
+        self.width = 0
+        self.height = 0
+
+    def set_pos(self, from_left, from_top, width, height):
+        self.from_left = from_left
+        self.from_top =  from_top
+        self.width = width
+        self.height = height
+
+    def get_button(self, x, y):
+        if self.from_left < x < self.from_left + self.width:
+            if self.from_top < y < self.from_top + self.height:
+                pass
+
 class Display:
     def __init__(self):
         pygame.display.set_caption(title="Game")
