@@ -15,7 +15,7 @@ class Display:
         # render_thread = threading.Thread(target=self.render)
         # render_thread.start()
 
-    def add_rect(self, object, color):
+    def add_rect(self, object, color): # Rect(left, top, width, height)
         self.rects.append([object, color])
 
     def add_c_object(self, path, pos):
