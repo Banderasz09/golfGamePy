@@ -14,7 +14,7 @@ class Button:
         self.height = height
 
     def isclicked(self):
-
+        pass
 
 class UI:
     def main_menu(self):
