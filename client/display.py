@@ -7,6 +7,10 @@ class Button:
         self.from_top = 0
         self.width = 0
         self.height = 0
+        self.name = 0
+
+    def set_name(self, name):
+        self.name = name
 
     def set_pos(self, from_left, from_top, width, height):
         self.from_left = from_left
