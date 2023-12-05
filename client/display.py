@@ -9,21 +9,25 @@ class Button:
         self.height = 0
         self.name = 0
 
+
+
     def set_name(self, name):
         self.name = name
 
     def set_pos(self, from_left, from_top, width, height):
         self.from_left = from_left
-        self.from_top =  from_top
+        self.from_top = from_top
         self.width = width
         self.height = height
+
+        Display.add_rect((self.from_left, self.from_top, self.width, self.height))
 
     def get_button(self, x, y):
         if self.from_left < x < self.from_left + self.width:
             if self.from_top < y < self.from_top + self.height:
                 pass
 
-class Display:
+class Display(object):
     def __init__(self):
         pygame.display.set_caption(title="Game")
         self.WIN = pygame.display.set_mode((1280, 720))

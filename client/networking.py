@@ -1,6 +1,6 @@
 import socket
 
-class Network:
+class Network(object):
     def __init__(self):
         self.HEADER = 64
         self.server = "IP"

@@ -1,10 +1,11 @@
 import pygame
 from display import Display
 from networking import Network
+from ui import UI
 
 clock = pygame.time.Clock
 
-network = Network()
+onMenu = True
 
 def main():
     run = True
@@ -16,6 +17,8 @@ def main():
               run = False
             if pygame.mouse.get_pressed(1) == pygame.MOUSEBUTTONDOWN:
                 mouse_pos_x, mouse_pos_y = pygame.mouse.get_pos()
+                if onMenu:
+                    eval("UI.curr" + ) # todo!!
                 
 
     pygame.quit()  

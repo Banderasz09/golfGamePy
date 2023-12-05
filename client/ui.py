@@ -1,15 +1,16 @@
 from display import *
 
+class UI(object):
 
-
-class UI:
-    def main_menu(self):
+    def __init__(self):
+        self.curr = "main"
+    def main(self):
         pass
 
-    def conn_screen(self):
+    def conn(self):
         pass
 
-    def end_screen(self):
+    def end(self):
         pass
 
     def license_screen(self):
