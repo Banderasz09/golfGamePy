@@ -19,7 +19,7 @@ def main():
             if pygame.mouse.get_pressed(1) == pygame.MOUSEBUTTONDOWN:
                 mouse_pos_x, mouse_pos_y = pygame.mouse.get_pos()
                 if onMenu:
-                    eval("UI.curr" + )
+                    Display.get_button(mouse_pos_x, mouse_pos_y)
                 
 
     pygame.quit()  

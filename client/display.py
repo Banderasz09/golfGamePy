@@ -36,8 +36,8 @@ class Display(object):
         self.custom_objects = []
         self.texts = []
         self.buttons = []
-
         self.buttonNames = []
+
         # render_thread = threading.Thread(target=self.render)
         # render_thread.start()
 
