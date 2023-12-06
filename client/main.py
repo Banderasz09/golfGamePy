@@ -15,10 +15,11 @@ def main():
         for event in pygame.event.get():
             if event == pygame.QUIT:
               run = False
+
             if pygame.mouse.get_pressed(1) == pygame.MOUSEBUTTONDOWN:
                 mouse_pos_x, mouse_pos_y = pygame.mouse.get_pos()
                 if onMenu:
-                    eval("UI.curr" + ) # todo!!
+                    eval("UI.curr" + )
                 
 
     pygame.quit()  
