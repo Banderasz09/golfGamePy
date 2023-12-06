@@ -1,15 +1,14 @@
 import pygame
 import threading
 
+
 class Button:
-    def __init__(self):
-        self.from_left = 0
-        self.from_top = 0
-        self.width = 0
-        self.height = 0
+    def __init__(self, from_left, from_top, width, height):
+        self.from_left = from_left
+        self.from_top = from_top
+        self.width = width
+        self.height = height
         self.name = 0
-
-
 
     def set_name(self, name):
         self.name = name
@@ -20,18 +19,11 @@ class Button:
     def Hide(self):
         Display.removeRect((self.from_left, self.from_top, self.width, self.height))
 
-    def set_pos(self, from_left, from_top, width, height):
-        self.from_left = from_left
-        self.from_top = from_top
-        self.width = width
-        self.height = height
+    def getPosition(self):
+        return (self.x, self.y, self.width, self.height)
 
-        
-
-    def get_button(self, x, y):
-        if self.from_left < x < self.from_left + self.width:
-            if self.from_top < y < self.from_top + self.height:
-                
+    def getName(self):
+        return self.name
 
 class Display(object):
     def __init__(self):
@@ -43,15 +35,43 @@ class Display(object):
         self.rects = []
         self.custom_objects = []
         self.texts = []
+        self.buttons = []
 
+        self.buttonNames = []
         # render_thread = threading.Thread(target=self.render)
         # render_thread.start()
 
-    def add_button():
+    def add_button(self, name):
+        self.buttons[len(self.buttons)] = Button()
+        self.buttons[-1].set_name(name)
+        self.buttonNames.append(name)
 
-    def get_button():
+    def get_button(self, x, y):
+        for button in self.buttons:
+            pos = button.getPosition()
+            if pos[0] < x < pos[0] + pos[2]:
+                if pos[1] < y < pos[1] + pos[3]:
+                    return button.getName()
 
-    def add_rect(self, object, color): # Rect(left, top, width, height)
+    def show_button(self, name):
+        it = 0
+
+        for item in self.buttonNames:
+            if item == name:
+                self.buttons[it].Show()
+            else:
+                it += 1
+
+    def Hide_button(self, name):
+        it = 0
+
+        for item in self.buttonNames:
+            if item == name:
+                self.buttons[it].Hide()
+            else:
+                it += 1
+
+    def add_rect(self, object, color):  # Rect(left, top, width, height)
         self.rects.append([object, color])
 
     def removeRect(self, object):
@@ -66,7 +86,6 @@ class Display(object):
         for item in self.custom_objects:
             if item[0] == path:
                 self.custom_objects.remove(item)
-
 
     def render_text(self, text, color, place):
         font = pygame.font.SysFont('Comic Sans MS', 30)
