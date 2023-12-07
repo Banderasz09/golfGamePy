@@ -1,11 +1,8 @@
 from display import *
 
 class UI(object):
-
-    def __init__(self):
-        self.curr = "main"
     def main(self):
-        pass
+        Display.
 
     def conn(self):
         pass
@@ -13,6 +10,6 @@ class UI(object):
     def end(self):
         pass
 
-    def license_screen(self):
+    def license(self):
         pass
 
