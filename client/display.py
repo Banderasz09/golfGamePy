@@ -3,27 +3,35 @@ import threading
 
 
 class Button:
-    def __init__(self, from_left, from_top, width, height):
+    def __init__(self, from_left, from_top, width, height, text):
         self.from_left = from_left
         self.from_top = from_top
         self.width = width
         self.height = height
         self.name = 0
 
+
+        self.text = text
+
     def set_name(self, name):
         self.name = name
 
     def Show(self):
         Display.add_rect((self.from_left, self.from_top, self.width, self.height))
+        Display.render_text(self.text, (0, 0, 0), self.from_left, self.from_top)
+
 
     def Hide(self):
         Display.removeRect((self.from_left, self.from_top, self.width, self.height))
+        Display.remove_text(place=(self.from_left, self.from_top))
 
     def getPosition(self):
         return (self.x, self.y, self.width, self.height)
 
     def getName(self):
         return self.name
+
+
 
 class Display(object):
     def __init__(self):
@@ -41,8 +49,8 @@ class Display(object):
         # render_thread = threading.Thread(target=self.render)
         # render_thread.start()
 
-    def add_button(self, name):
-        self.buttons[len(self.buttons)] = Button()
+    def add_button(self, name, x, y, width, height, text):
+        self.buttons[len(self.buttons)] = Button(x, y, width, height, text)
         self.buttons[-1].set_name(name)
         self.buttonNames.append(name)
 
@@ -80,7 +88,7 @@ class Display(object):
                 self.rects.remove(item)
 
     def add_c_object(self, path, pos):
-        self.custom_objects.append([path, pos])
+            self.custom_objects.append([path, pos])
 
     def removeCObject(self, path):
         for item in self.custom_objects:
@@ -91,6 +99,11 @@ class Display(object):
         font = pygame.font.SysFont('Comic Sans MS', 30)
         text_to_render = font.render(text, False, color)
         self.texts.append([text_to_render, place])
+
+    def remove_text(self, place):
+        for item in self.texts:
+            if item[1] == place:
+                self.texts.remove(item)
 
     def render(self):
         self.WIN.fill(self.BackGroundColor)
