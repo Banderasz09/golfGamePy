@@ -5,6 +5,10 @@ from ui import UI
 
 clock = pygame.time.Clock
 
+class Game(object):
+    def connect(self, ip, port):
+        pass
+
 onMenu = True
 
 def main():
@@ -19,7 +23,7 @@ def main():
             if pygame.mouse.get_pressed(1) == pygame.MOUSEBUTTONDOWN:
                 mouse_pos_x, mouse_pos_y = pygame.mouse.get_pos()
                 if onMenu:
-                    Display.get_button(mouse_pos_x, mouse_pos_y)
+                    eval(Display.get_button(mouse_pos_x, mouse_pos_y))
                 
 
     pygame.quit()  

@@ -70,14 +70,9 @@ class Display(object):
             else:
                 it += 1
 
-    def Hide_button(self, name):
-        it = 0
-
-        for item in self.buttonNames:
-            if item == name:
-                self.buttons[it].Hide()
-            else:
-                it += 1
+    def Hide_buttons(self):
+        for item in self.buttons:
+            item.Hide()
 
     def add_rect(self, object, color):  # Rect(left, top, width, height)
         self.rects.append([object, color])
